@@ -868,7 +868,7 @@ function update(){
     // Validated: 12/14 scenarios in range, bias toward conservative (safer failure mode)
     const refActivity=3.6;
     const fH=+document.getElementById('fTimeSlider').value;
-    const basePct=(0.35/100)*(refActivity/activity);
+    const basePct=(0.35/100)*(refActivity/Math.max(0.01,activity));
     const retardPenalty=fH>0?Math.max(0.15,1/Math.sqrt(1+fH/12)):1;
     const yPct=Math.min(0.02,Math.max(0.0005,basePct*retardPenalty))*(yeast==='IDY'?0.75:1);
     const yG=fb*yPct;
